@@ -8,7 +8,7 @@ instructions=[]
 math_tokens=["+","-","*","/"]
 print_tokens=["SayStr","SayInt","Say"]
 var_tokens=["VarAdd","VarSay","VarDel","Var"]
-console_commands=["cc","clear"]
+console_commands=["cc","clear","end"]
 all_tokens=math_tokens+print_tokens+var_tokens+console_commands
 
 """class Vars:
@@ -44,22 +44,10 @@ while True:
                     print(tokens[i]," ",end="")
                 print("")
 
-            elif tokens[1]=="Int" and tokens[3] in math_tokens:
-
-                if tokens[3]=="+":
-                    x=int(tokens[2])+int(tokens[4])
-
-
-                elif tokens[3]=="-":
-                    x=int(tokens[2])-int(tokens[4])
-            
-
-                elif tokens[3]=="*":
-                    x=int(tokens[2])*int(tokens[4])
-            
-
-                elif tokens[3]=="/":
-                    x=int(tokens[2])/int(tokens[4])
+            elif tokens[1]=="Int":
+                for i in range(3,len(tokens)):
+                    tokens[2]+=str(tokens[i])
+                x=eval(tokens[2])
         
                 print(x)
 
@@ -78,6 +66,8 @@ while True:
         elif tokens[0]=="cc" :
             if tokens[1]=="clear":
                 os.system('cls')
+            if tokens[1]=="end":
+                exit()
 
         elif tokens[0] in var_tokens:
             if tokens[0]=="Var":
