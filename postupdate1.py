@@ -1,21 +1,32 @@
 import os
+import re
 os.system('cls')
 tokens=[]
+new_tokens=[]
 var=[]
 added_var=""
 var_num=0
 stack=""
 instructions=[]
+intsort=[]
+strsort=[]
+intused=False
+strused=False
+temp_string=""
 math_tokens=["+","-","*","/"]
 print_tokens=["SayStr","SayInt","Say"]
 var_tokens=["VarAdd","VarSay","VarDel","Var"]
 console_commands=["cc","clear","end"]
 all_tokens=math_tokens+print_tokens+var_tokens+console_commands
 
-"""class Vars:
-    def __init__(self):"""
 while True:
     tokens=[]
+    stack=""
+    intsort=[]
+    strsort=[]
+    intused=False
+    strused=False
+    new_tokens=[]
     inp=input("LANGUAGE >")
     tokens=inp.split()
     print(tokens)
@@ -33,20 +44,32 @@ while True:
 
     #checks if tokens used for saying
         elif tokens[0]=="Say":
+            tokens=re.split(r"Say |, | , | ,|,",inp)
+            for i in range(1,len(tokens)):
+                temp_string=tokens[i]
 
-            if tokens[1]=="Str":
-                for i in range(2,len(tokens)):
-                    print(tokens[i]," ",end="")
-                print("")
+                if temp_string[0]=="I" and temp_string[1]=="n" and temp_string[2]=="t" :
+                    re.split(r"Int|Int ",temp_string)
+                    temp_string=temp_string.replace("Int ","")
+                    temp_string=temp_string.strip()
+                    intsort.append(temp_string)
+                    intused=True
 
-            elif tokens[1]=="Int":
-                for i in range(3,len(tokens)):
-                    tokens[2]+=str(tokens[i])
-                x=eval(tokens[2])
-        
-                print(round(x,13))
+                if temp_string[0]=="S" and temp_string[1]=="t" and temp_string[2]=="r" :
+                    re.split(r"Str|Str ",temp_string)
+                    temp_string=temp_string.replace("Str ","")
+                    temp_string=temp_string.strip()
+                    strsort.append(temp_string)
+                    strused=True
 
-            elif tokens[1]=="Var":
+            if intused==True:
+                print(intsort)
+            elif strused==True:
+                for i in range(0,len(strsort)):
+                    print(strsort[i],end=" ")
+            print("")
+
+            if tokens[1]=="Var": #add variable to say function
                 if tokens[2]=="All":
                     for i in range(0,len(var)):
                         print(f"Variable number {i}: (",var[i],end=") ")
