@@ -1,8 +1,7 @@
-import os
+from clear_screen import clear
 import re
-os.system('cls')
+clear()
 tokens=[]
-new_tokens=[]
 var=[]
 added_var=""
 var_num=0
@@ -26,7 +25,6 @@ while True:
     strsort=[]
     intused=False
     strused=False
-    new_tokens=[]
     inp=input("LANGUAGE >")
     tokens=inp.split()
     print(tokens)
@@ -44,7 +42,7 @@ while True:
 
     #checks if tokens used for saying
         elif tokens[0]=="Say":
-            tokens=re.split(r"Say |, | , | ,|,",inp)
+            tokens=re.split(r"Say |;; | ;; | ;;|;;",inp)
             for i in range(1,len(tokens)):
                 temp_string=tokens[i]
 
@@ -63,8 +61,9 @@ while True:
                     strused=True
 
             if intused==True:
-                print(intsort)
-            elif strused==True:
+                for i in range(0,len(intsort)):
+                    print(round(eval(intsort[i]),13))
+            if strused==True:
                 for i in range(0,len(strsort)):
                     print(strsort[i],end=" ")
             print("")
@@ -85,7 +84,7 @@ while True:
     #used for console commands
         elif tokens[0]=="cc" :
             if tokens[1]=="clear":
-                os.system('cls')
+                clear()
             if tokens[1]=="end":
                 exit()
 
