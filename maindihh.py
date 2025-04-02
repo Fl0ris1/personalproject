@@ -2,9 +2,12 @@ array=[0]
 pos=0
 stack=[]
 num_check=[]
+isFloat=False
+isInt=False
+isStr=False
 #constant
 stack_pointer=0
-digits="1234568790"
+digits="1234568790." #ADD DIFFERENTIATOR BETWEEN STR INT AND FLOAT FOR INPUT INSTRUCTION
 inp=input()
 for i in range(0,len(inp)):
     if inp[i]==" ":
@@ -40,12 +43,7 @@ for i in range(0,len(inp)):
         
     elif inp[i]=="'":
         inp1=input()
-        
-        inp1=inp1.replace(" ","")
-        inp1=inp1.replace(" ","")
-            array[pos]=int(inp1)
-        else:
-            array[pos]=str(inp1)
+                   
         
     elif inp[i]==";":
         stack.append(array[pos])
