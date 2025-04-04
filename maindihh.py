@@ -1,19 +1,16 @@
+import Type
+check=Type.TypeCheck
 array=[0]
 pos=0
 stack=[]
 num_check=[]
-isFloat=False
-isInt=False
-isStr=False
+tokens=[]
 #constant
 stack_pointer=0
-digits="1234568790." #ADD DIFFERENTIATOR BETWEEN STR INT AND FLOAT FOR INPUT INSTRUCTION
 inp=input()
+inp.replace(" ","")
 for i in range(0,len(inp)):
-    if inp[i]==" ":
-        i+=1
-        
-    elif inp[i]==".":
+    if inp[i]==".":
         array.append(0)
         pos=len(array)-1
         
@@ -43,7 +40,12 @@ for i in range(0,len(inp)):
         
     elif inp[i]=="'":
         inp1=input()
-                   
+        if check(inp1)=="FLOAT":
+            array[pos]=float(inp1)
+        elif check(inp1)=="INT":
+            array[pos]=int(inp1)
+        elif check(inp1)=="STRING":
+            array[pos]=str(inp1)               
         
     elif inp[i]==";":
         stack.append(array[pos])
@@ -55,3 +57,6 @@ for i in range(0,len(inp)):
         
     elif inp[i]=="#":
         array[pos]=array[pos]+array[pos+1]
+
+    elif inp[i]=="*":
+        if 
