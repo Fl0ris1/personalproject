@@ -1,4 +1,4 @@
-def TypeCheck(x):#,var
+def check(x):#,var
     isStr=False
     isInt=False
     isFloat=False
@@ -21,3 +21,27 @@ def TypeCheck(x):#,var
         y="STRING"
 
     return y
+    
+def isNum(x,z):#FIX TS (LK STRING NUMBERS AND FLOATS)
+    isOdd=False
+    isEven=False
+    if z==True:
+        if type(x)!=str:
+            if x%2==0:
+                isEven=True
+            else:
+                isOdd=True
+    elif z==False:
+        if type(x)!=str and type(x)!=float:
+            if x%2==0:
+                isEven=True
+            else:
+                isOdd=True
+    
+    if isOdd==True:
+        y="ODD"
+    elif isEven==True:
+        y="EVEN"
+        
+    return y
+        
