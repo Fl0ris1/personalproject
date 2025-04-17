@@ -1,3 +1,4 @@
+alphabet="abcdefghijklmnopqrstuvwxyz"
 def numSort(x):
     sortedList=[]
     for i in range(0,len(x)):
@@ -8,7 +9,6 @@ def numSort(x):
 def letSort(x):
     nums=[]
     sortedList=[]
-    alphabet="abcdefghijklmnopqrstuvwxyz"
     for pos in range(0,len(x)):
         for i in range(0,len(alphabet)):
             if x[pos]==alphabet[i]:
@@ -18,3 +18,12 @@ def letSort(x):
         nums[i]=alphabet[nums[i]]
         
     return nums
+    
+def alphabetNum(x):
+    nums=[]
+    for pos in range(0,len(x)):
+        for letter in range(0,len(alphabet)):
+            if x[pos]==alphabet[letter]:
+                nums.append(letter+1)
+    return nums
+    
